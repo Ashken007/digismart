@@ -956,11 +956,7 @@
 
                 try {
                     var response = await fetch("/api/inbox?limit=20");
-                    var result = await response.json();
-
-                    if (!response.ok) {
-                        throw new Error(result.error || "Unable to load inbox.");
-                    }
+                    var result = await readJsonResponse(response, "The inbox API is not available on this hosted site.");
 
                     inboxMessages = annotateInboxMessages(result.messages || []);
                     renderInboxEmails(inboxMessages);
@@ -969,6 +965,40 @@
                     inboxStatus.textContent = error.message || "Unable to load inbox.";
                     inboxStatus.classList.add("error");
                 }
+            }
+
+            async function readJsonResponse(response, unavailableMessage) {
+                var contentType = "";
+                var responseText = "";
+                var parsed = {};
+
+                try {
+                    contentType = String(response.headers.get("content-type") || "").toLowerCase();
+                } catch (error) {
+                    contentType = "";
+                }
+
+                try {
+                    responseText = await response.text();
+                } catch (error) {
+                    responseText = "";
+                }
+
+                if (contentType.indexOf("application/json") === -1) {
+                    throw new Error(unavailableMessage || "The email API is not available on this hosted site.");
+                }
+
+                try {
+                    parsed = responseText ? JSON.parse(responseText) : {};
+                } catch (error) {
+                    throw new Error("The email server returned invalid JSON.");
+                }
+
+                if (!response.ok) {
+                    throw new Error(parsed.error || unavailableMessage || "Unable to complete the request.");
+                }
+
+                return parsed;
             }
 
             sendEmailForm.addEventListener("submit", async function (event) {
@@ -1045,15 +1075,9 @@
                         method: "POST",
                         body: requestBody
                     });
-                    result = await response.json();
+                    result = await readJsonResponse(response, "The email API is not available on this hosted site.");
                 } catch (error) {
-                    emailStatus.textContent = "Unable to connect to email server.";
-                    emailStatus.classList.add("error");
-                    return;
-                }
-
-                if (!response.ok) {
-                    emailStatus.textContent = result.error || "Unable to send email.";
+                    emailStatus.textContent = error.message || "Unable to connect to email server.";
                     emailStatus.classList.add("error");
                     return;
                 }
@@ -1194,14 +1218,8 @@
                         message: replyText
                     })
                 }).then(function (response) {
-                    return response.json().then(function (result) {
-                        return { response: response, result: result };
-                    });
-                }).then(function (payload) {
-                    if (!payload.response.ok) {
-                        throw new Error(payload.result.error || "Unable to send reply.");
-                    }
-
+                    return readJsonResponse(response, "The email API is not available on this hosted site.");
+                }).then(function () {
                     replyTextarea.value = "";
                     inboxStatus.textContent = "Reply sent successfully.";
                 }).catch(function (error) {
