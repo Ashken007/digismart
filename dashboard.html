@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cre.ashokleyland.com/images/favicon-ico.png" type="image/x-icon">
+    <link href="font-awesome.min.css" rel="stylesheet">
+    <link href="login-clean.css" rel="stylesheet">
+    <title>DIGISMART Dashboard</title>
+</head>
+<body>
+    <header class="dashboard-topbar">
+        <img src="logo.png" alt="Ashok Leyland" class="dashboard-logo">
+        <div class="profile-menu">
+            <button type="button" id="profile-toggle" class="profile-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="profile-panel" aria-label="Open profile menu">
+                <img id="profile-avatar" class="profile-avatar d-none" alt="">
+                <i id="profile-avatar-icon" class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </button>
+            <div id="profile-panel" class="profile-panel d-none" role="menu" aria-label="Profile details">
+                <section id="profile-menu-view" class="profile-menu-view">
+                    <button type="button" id="profile-my-profile" class="profile-menu-item">My profile</button>
+                    <button type="button" id="profile-settings" class="profile-menu-item">Settings</button>
+                    <button type="button" id="logout-button" class="profile-menu-item profile-logout-button">Logout</button>
+                </section>
+
+                <section id="profile-detail-view" class="profile-detail-view d-none" aria-label="My profile">
+                    <div class="profile-detail-header">
+                        <button type="button" id="profile-back" class="profile-back-button">Back</button>
+                        <strong>My profile</strong>
+                    </div>
+
+                    <div class="profile-photo-block">
+                        <div class="profile-photo-wrap" aria-hidden="true">
+                            <img id="profile-photo-preview" class="profile-photo-preview d-none" alt="">
+                            <i id="profile-photo-placeholder" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <label for="profile-image-input" class="profile-image-button">Select image</label>
+                        <input type="file" id="profile-image-input" class="profile-image-input" accept="image/*">
+                    </div>
+
+                    <div class="profile-info-list">
+                        <div class="profile-info-row">
+                            <span>Name</span>
+                            <strong id="profile-name">Username</strong>
+                        </div>
+                        <div class="profile-info-row">
+                            <span>Mobile number</span>
+                            <strong id="profile-phone">Phone Number</strong>
+                        </div>
+                        <div class="profile-info-row">
+                            <span>Email</span>
+                            <strong id="profile-email">Email</strong>
+                        </div>
+                        <div class="profile-info-row">
+                            <span>Gender</span>
+                            <strong id="profile-gender">Gender</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="profile-settings-view" class="profile-detail-view d-none" aria-label="Settings">
+                    <div class="profile-detail-header">
+                        <button type="button" id="profile-settings-back" class="profile-back-button">Back</button>
+                        <strong>Settings</strong>
+                    </div>
+
+                    <div class="profile-settings-block">
+                        <div class="profile-settings-copy">
+                            <strong>Background image</strong>
+                            <span>Upload an image to use as the app background.</span>
+                        </div>
+                        <div class="profile-settings-preview" aria-hidden="true">
+                            <img id="login-background-preview" class="profile-settings-preview-image d-none" alt="">
+                            <i id="login-background-placeholder" class="fa fa-image" aria-hidden="true"></i>
+                        </div>
+                        <label for="login-background-input" class="profile-image-button">Upload image</label>
+                        <input type="file" id="login-background-input" class="profile-image-input" accept="image/*">
+                        <button type="button" id="login-background-ok" class="profile-apply-button">OK</button>
+                        <p id="login-background-status" class="profile-settings-status" aria-live="polite"></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-shell">
+        <aside class="dashboard-sidebar" aria-label="Dashboard options">
+            <button type="button" class="sidebar-option compose-option" id="send-email-tab">
+                <span class="compose-icon" aria-hidden="true">&#9998;</span>
+                <span>Compose</span>
+            </button>
+            <button type="button" class="sidebar-option" id="inbox-tab">
+                <span aria-hidden="true"><i class="fa fa-inbox"></i></span>
+                <span>Inbox</span>
+            </button>
+            <button type="button" class="sidebar-option" id="sent-email-tab">Sent Emails</button>
+        </aside>
+
+        <section class="dashboard-workspace">
+            <section class="dashboard-view d-none" id="send-email-view" aria-labelledby="send-email-title">
+                <h1 id="send-email-title">Send Email</h1>
+                <form id="send-email-form" class="email-form compose-form" novalidate>
+                    <div class="compose-row compose-recipient-row">
+                        <label for="recipient-email" class="sr-only">To</label>
+                        <div class="compose-recipient-label">To</div>
+                        <input id="recipient-email" type="text" autocomplete="off" placeholder="">
+                        <div class="compose-recipient-actions">
+                            <button type="button" id="toggle-cc" class="compose-inline-action" aria-expanded="false" aria-controls="cc-row">Cc</button>
+                            <button type="button" id="toggle-bcc" class="compose-inline-action" aria-expanded="false" aria-controls="bcc-row">Bcc</button>
+                        </div>
+                    </div>
+
+                    <div class="compose-row compose-extra-row d-none" id="cc-row">
+                        <label for="cc-email" class="sr-only">Cc</label>
+                        <div class="compose-recipient-label">Cc</div>
+                        <input id="cc-email" type="text" autocomplete="off" placeholder="">
+                    </div>
+
+                    <div class="compose-row compose-extra-row d-none" id="bcc-row">
+                        <label for="bcc-email" class="sr-only">Bcc</label>
+                        <div class="compose-recipient-label">Bcc</div>
+                        <input id="bcc-email" type="text" autocomplete="off" placeholder="">
+                    </div>
+
+                    <div class="compose-row compose-subject-row">
+                        <label for="email-subject" class="sr-only">Subject</label>
+                        <input id="email-subject" type="text" autocomplete="off" placeholder="Subject">
+                    </div>
+
+                    <div class="compose-message-shell">
+                        <label for="email-message" class="sr-only">Message</label>
+                        <textarea id="email-message" rows="12" autocomplete="off" placeholder=""></textarea>
+                    </div>
+
+                    <div class="compose-toolbar" aria-label="Compose tools">
+                        <button type="button" class="compose-icon-button" id="attach-file" title="Attach file" aria-label="Attach file">
+                            <svg viewBox="0 0 24 24" class="compose-icon-svg" aria-hidden="true">
+                                <path d="M8.5 12.5l6.6-6.6a3.5 3.5 0 0 1 5 5L10.4 20.6a5 5 0 0 1-7.1-7.1l11-11"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="compose-icon-button" id="insert-link" title="Insert link" aria-label="Insert link">
+                            <svg viewBox="0 0 24 24" class="compose-icon-svg" aria-hidden="true">
+                                <path d="M10.2 13.8l3.6-3.6"/>
+                                <path d="M8.5 16.5 6.8 18.2a4 4 0 0 1-5.7-5.7L3 10.6a4 4 0 0 1 5.7 0"/>
+                                <path d="M15.5 7.5l1.7-1.7a4 4 0 1 1 5.7 5.7l-1.7 1.7a4 4 0 0 1-5.7 0"/>
+                            </svg>
+                        </button>
+                        <input type="file" id="attachment-input" class="compose-file-input" multiple>
+                    </div>
+                    <div id="attachment-list" class="compose-attachment-list" aria-live="polite"></div>
+
+                    <button type="submit" class="login-button email-send-button">Send Email</button>
+                    <p id="email-status" class="email-status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <section class="dashboard-view d-none" id="inbox-view" aria-labelledby="inbox-title">
+                <div class="dashboard-view-header">
+                    <h1 id="inbox-title">Inbox</h1>
+                    <button type="button" id="refresh-inbox" class="refresh-button">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+                <p id="inbox-status" class="inbox-status" aria-live="polite"></p>
+                <div id="inbox-categories" class="inbox-categories" role="tablist" aria-label="Inbox categories">
+                    <button type="button" class="inbox-category-button active" data-category="primary" aria-selected="true" role="tab">
+                        <i class="fa fa-inbox inbox-category-icon" aria-hidden="true"></i>
+                        <span class="inbox-category-copy">Primary</span>
+                        <span id="inbox-primary-count" class="inbox-category-count inbox-category-count-primary d-none"></span>
+                    </button>
+                    <button type="button" class="inbox-category-button" data-category="promotions" aria-selected="false" role="tab">
+                        <i class="fa fa-tag inbox-category-icon" aria-hidden="true"></i>
+                        <span class="inbox-category-copy">Promotions</span>
+                        <span id="inbox-promotions-count" class="inbox-category-count inbox-category-count-promotions d-none"></span>
+                    </button>
+                    <button type="button" class="inbox-category-button" data-category="social" aria-selected="false" role="tab">
+                        <i class="fa fa-users inbox-category-icon" aria-hidden="true"></i>
+                        <span class="inbox-category-copy">Social</span>
+                        <span id="inbox-social-count" class="inbox-category-count inbox-category-count-social d-none"></span>
+                    </button>
+                    <button type="button" class="inbox-category-button" data-category="updates" aria-selected="false" role="tab">
+                        <i class="fa fa-info-circle inbox-category-icon" aria-hidden="true"></i>
+                        <span class="inbox-category-copy">Updates</span>
+                        <span id="inbox-updates-count" class="inbox-category-count inbox-category-count-updates d-none"></span>
+                    </button>
+                </div>
+                <div id="inbox-list" class="inbox-list"></div>
+            </section>
+
+            <section class="dashboard-view d-none" id="sent-email-view" aria-labelledby="sent-email-title">
+                <h1 id="sent-email-title">Sent Emails</h1>
+                <div id="sent-email-list" class="sent-email-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            var currentUserKey = "digismartCurrentUser";
+            var registeredUsersKey = "digismartRegisteredUsers";
+            var currentUser = localStorage.getItem(currentUserKey);
+            var sentEmailsKey = "";
+            var sendEmailTab = document.getElementById("send-email-tab");
+            var inboxTab = document.getElementById("inbox-tab");
+            var sentEmailTab = document.getElementById("sent-email-tab");
+            var sendEmailView = document.getElementById("send-email-view");
+            var inboxView = document.getElementById("inbox-view");
+            var sentEmailView = document.getElementById("sent-email-view");
+            var sendEmailForm = document.getElementById("send-email-form");
+            var profileToggle = document.getElementById("profile-toggle");
+            var profilePanel = document.getElementById("profile-panel");
+            var profileAvatar = document.getElementById("profile-avatar");
+            var profileAvatarIcon = document.getElementById("profile-avatar-icon");
+            var profileMenuView = document.getElementById("profile-menu-view");
+            var profileDetailView = document.getElementById("profile-detail-view");
+            var profileMyProfileButton = document.getElementById("profile-my-profile");
+            var profileSettingsButton = document.getElementById("profile-settings");
+            var profileBackButton = document.getElementById("profile-back");
+            var profileSettingsView = document.getElementById("profile-settings-view");
+            var profileSettingsBackButton = document.getElementById("profile-settings-back");
+            var profileName = document.getElementById("profile-name");
+            var profileEmail = document.getElementById("profile-email");
+            var profilePhone = document.getElementById("profile-phone");
+            var profileGender = document.getElementById("profile-gender");
+            var profileImageInput = document.getElementById("profile-image-input");
+            var profilePhotoPreview = document.getElementById("profile-photo-preview");
+            var profilePhotoPlaceholder = document.getElementById("profile-photo-placeholder");
+            var loginBackgroundInput = document.getElementById("login-background-input");
+            var loginBackgroundPreview = document.getElementById("login-background-preview");
+            var loginBackgroundPlaceholder = document.getElementById("login-background-placeholder");
+            var loginBackgroundApplyButton = document.getElementById("login-background-ok");
+            var loginBackgroundStatus = document.getElementById("login-background-status");
+            var profileLogoutButton = document.getElementById("logout-button");
+            var recipientEmailInput = document.getElementById("recipient-email");
+            var ccEmailInput = document.getElementById("cc-email");
+            var bccEmailInput = document.getElementById("bcc-email");
+            var emailSubjectInput = document.getElementById("email-subject");
+            var emailMessageInput = document.getElementById("email-message");
+            var emailStatus = document.getElementById("email-status");
+            var inboxStatus = document.getElementById("inbox-status");
+            var inboxList = document.getElementById("inbox-list");
+            var refreshInboxButton = document.getElementById("refresh-inbox");
+            var inboxCategoryButtons = Array.prototype.slice.call(document.querySelectorAll(".inbox-category-button"));
+            var inboxPrimaryCount = document.getElementById("inbox-primary-count");
+            var inboxPromotionsCount = document.getElementById("inbox-promotions-count");
+            var inboxSocialCount = document.getElementById("inbox-social-count");
+            var inboxUpdatesCount = document.getElementById("inbox-updates-count");
+            var sentEmailList = document.getElementById("sent-email-list");
+            var toggleCcButton = document.getElementById("toggle-cc");
+            var toggleBccButton = document.getElementById("toggle-bcc");
+            var ccRow = document.getElementById("cc-row");
+            var bccRow = document.getElementById("bcc-row");
+            var attachmentInput = document.getElementById("attachment-input");
+            var attachFileButton = document.getElementById("attach-file");
+            var insertLinkButton = document.getElementById("insert-link");
+            var attachmentList = document.getElementById("attachment-list");
+            var selectedAttachments = [];
+            var inboxMessages = [];
+            var activeInboxCategory = "primary";
+            var loginBackgroundKey = "digismartLoginBackgroundImage";
+            var pendingLoginBackgroundImage = "";
+
+            if (!currentUser) {
+                window.location.href = "CRE - DIGISMART.html";
+                return;
+            }
+
+            try {
+                currentUser = JSON.parse(currentUser);
+            } catch (error) {
+                window.location.href = "CRE - DIGISMART.html";
+                return;
+            }
+
+            function getRegisteredUsers() {
+                var users = localStorage.getItem(registeredUsersKey);
+
+                if (!users) {
+                    return [];
+                }
+
+                try {
+                    return JSON.parse(users);
+                } catch (error) {
+                    return [];
+                }
+            }
+
+            function saveRegisteredUsers(users) {
+                localStorage.setItem(registeredUsersKey, JSON.stringify(users));
+            }
+
+            function renderProfileAvatar(imageUrl) {
+                var hasImage = Boolean(imageUrl);
+
+                if (hasImage) {
+                    profileAvatar.src = imageUrl;
+                    profileAvatar.alt = (currentUser.username || "Profile") + " profile photo";
+                    profileAvatar.classList.remove("d-none");
+                    profileAvatarIcon.classList.add("d-none");
+                    profilePhotoPreview.src = imageUrl;
+                    profilePhotoPreview.alt = (currentUser.username || "Profile") + " photo";
+                    profilePhotoPreview.classList.remove("d-none");
+                    profilePhotoPlaceholder.classList.add("d-none");
+                } else {
+                    profileAvatar.removeAttribute("src");
+                    profileAvatar.alt = "";
+                    profileAvatar.classList.add("d-none");
+                    profileAvatarIcon.classList.remove("d-none");
+                    profilePhotoPreview.removeAttribute("src");
+                    profilePhotoPreview.alt = "";
+                    profilePhotoPreview.classList.add("d-none");
+                    profilePhotoPlaceholder.classList.remove("d-none");
+                }
+            }
+
+            function renderProfileDetails() {
+                profileName.textContent = currentUser.username || "Username";
+                profileEmail.textContent = currentUser.email || "Email";
+                profilePhone.textContent = currentUser.mobileNumber || "Phone Number";
+                profileGender.textContent = currentUser.gender || "Gender";
+                renderProfileAvatar(currentUser.profileImage || "");
+            }
+
+            function getLoginBackgroundImage() {
+                return localStorage.getItem(loginBackgroundKey) || "";
+            }
+
+            function compressBackgroundImage(file) {
+                return new Promise(function (resolve, reject) {
+                    var objectUrl = URL.createObjectURL(file);
+                    var image = new Image();
+
+                    image.onload = function () {
+                        var width = image.naturalWidth || image.width || 1;
+                        var height = image.naturalHeight || image.height || 1;
+                        var maxDimension = 1600;
+                        var scale = Math.min(1, maxDimension / width, maxDimension / height);
+                        var targetWidth = Math.max(1, Math.round(width * scale));
+                        var targetHeight = Math.max(1, Math.round(height * scale));
+                        var canvas = document.createElement("canvas");
+                        var context = canvas.getContext("2d");
+
+                        canvas.width = targetWidth;
+                        canvas.height = targetHeight;
+                        context.drawImage(image, 0, 0, targetWidth, targetHeight);
+                        URL.revokeObjectURL(objectUrl);
+
+                        try {
+                            resolve(canvas.toDataURL("image/jpeg", 0.86));
+                        } catch (error) {
+                            reject(error);
+                        }
+                    };
+
+                    image.onerror = function () {
+                        URL.revokeObjectURL(objectUrl);
+                        reject(new Error("Unable to read the selected image."));
+                    };
+
+                    image.src = objectUrl;
+                });
+            }
+
+            function renderLoginBackgroundPreview(imageUrl) {
+                var hasImage = Boolean(imageUrl);
+
+                if (hasImage) {
+                    loginBackgroundPreview.src = imageUrl;
+                    loginBackgroundPreview.alt = "Login background preview";
+                    loginBackgroundPreview.classList.remove("d-none");
+                    loginBackgroundPlaceholder.classList.add("d-none");
+                    return;
+                }
+
+                loginBackgroundPreview.removeAttribute("src");
+                loginBackgroundPreview.alt = "";
+                loginBackgroundPreview.classList.add("d-none");
+                loginBackgroundPlaceholder.classList.remove("d-none");
+            }
+
+            function applyLoginBackgroundImage(imageUrl) {
+                var hasImage = Boolean(imageUrl);
+                pendingLoginBackgroundImage = imageUrl || "";
+
+                if (hasImage) {
+                    document.documentElement.style.setProperty("--login-panel-bg-image", 'url("' + imageUrl + '")');
+                } else {
+                    document.documentElement.style.removeProperty("--login-panel-bg-image");
+                }
+
+                renderLoginBackgroundPreview(imageUrl);
+            }
+
+            function saveLoginBackgroundImage(imageUrl) {
+                try {
+                    if (!imageUrl) {
+                        localStorage.removeItem(loginBackgroundKey);
+                        applyLoginBackgroundImage("");
+                        return true;
+                    }
+
+                    localStorage.setItem(loginBackgroundKey, imageUrl);
+                    applyLoginBackgroundImage(imageUrl);
+                    return true;
+                } catch (error) {
+                    return false;
+                }
+            }
+
+            function saveCurrentUser(updatedFields) {
+                var users = getRegisteredUsers();
+                var updatedUser = Object.assign({}, currentUser, updatedFields);
+                var matched = false;
+
+                currentUser = updatedUser;
+                localStorage.setItem(currentUserKey, JSON.stringify(updatedUser));
+
+                users = users.map(function (user) {
+                    if (user.mobileNumber === updatedUser.mobileNumber) {
+                        matched = true;
+                        return Object.assign({}, user, updatedUser);
+                    }
+
+                    return user;
+                });
+
+                if (!matched) {
+                    users.push(updatedUser);
+                }
+
+                saveRegisteredUsers(users);
+                renderProfileDetails();
+            }
+
+            function showProfileMenuView() {
+                profileMenuView.classList.remove("d-none");
+                profileDetailView.classList.add("d-none");
+                profileSettingsView.classList.add("d-none");
+            }
+
+            function showProfileDetailView() {
+                profileMenuView.classList.add("d-none");
+                profileDetailView.classList.remove("d-none");
+            }
+
+            function showProfileSettingsView() {
+                profileMenuView.classList.add("d-none");
+                profileSettingsView.classList.remove("d-none");
+            }
+
+            function normalizeInboxText(value) {
+                return String(value || "").toLowerCase();
+            }
+
+            function containsAny(source, keywords) {
+                return keywords.some(function (keyword) {
+                    return source.indexOf(keyword) !== -1;
+                });
+            }
+
+            function getInboxCategoryLabel(category) {
+                if (category === "promotions") {
+                    return "Promotions";
+                }
+
+                if (category === "social") {
+                    return "Social";
+                }
+
+                if (category === "updates") {
+                    return "Updates";
+                }
+
+                return "Primary";
+            }
+
+            function classifyInboxMessage(message) {
+                var source = normalizeInboxText([
+                    message.subject,
+                    message.from,
+                    message.fromEmail,
+                    message.preview,
+                    message.body
+                ].join(" "));
+                var socialKeywords = [
+                    "facebook",
+                    "instagram",
+                    "linkedin",
+                    "twitter",
+                    "x.com",
+                    "youtube",
+                    "tiktok",
+                    "snapchat",
+                    "whatsapp",
+                    "telegram",
+                    "community",
+                    "friend request",
+                    "follow",
+                    "mention",
+                    "comment",
+                    "connection"
+                ];
+                var promotionKeywords = [
+                    "sale",
+                    "offer",
+                    "discount",
+                    "deal",
+                    "promo",
+                    "promotion",
+                    "newsletter",
+                    "unsubscribe",
+                    "coupon",
+                    "clearance",
+                    "campaign",
+                    "limited time",
+                    "exclusive",
+                    "subscribe"
+                ];
+                var updateKeywords = [
+                    "alert",
+                    "notification",
+                    "otp",
+                    "verification",
+                    "confirm",
+                    "confirmation",
+                    "receipt",
+                    "invoice",
+                    "billing",
+                    "bill",
+                    "order",
+                    "shipping",
+                    "shipment",
+                    "delivery",
+                    "tracking",
+                    "statement",
+                    "security",
+                    "password",
+                    "reset",
+                    "account",
+                    "status",
+                    "report",
+                    "reminder",
+                    "ticket",
+                    "system",
+                    "update"
+                ];
+
+                if (containsAny(source, socialKeywords)) {
+                    return "social";
+                }
+
+                if (containsAny(source, promotionKeywords)) {
+                    return "promotions";
+                }
+
+                if (containsAny(source, updateKeywords) || (Array.isArray(message.attachments) && message.attachments.length && containsAny(source, ["invoice", "receipt", "order", "delivery", "shipping", "tracking"]))) {
+                    return "updates";
+                }
+
+                return "primary";
+            }
+
+            function annotateInboxMessages(messages) {
+                return messages.map(function (message, index) {
+                    return Object.assign({}, message, {
+                        sourceIndex: index,
+                        category: classifyInboxMessage(message)
+                    });
+                });
+            }
+
+            function updateInboxCategoryCounts(messages) {
+                var counts = {
+                    primary: 0,
+                    promotions: 0,
+                    social: 0,
+                    updates: 0
+                };
+
+                messages.forEach(function (message) {
+                    var category = message.category || classifyInboxMessage(message);
+
+                    if (message.unread && Object.prototype.hasOwnProperty.call(counts, category)) {
+                        counts[category] += 1;
+                    }
+                });
+
+                [
+                    { element: inboxPrimaryCount, value: counts.primary },
+                    { element: inboxPromotionsCount, value: counts.promotions },
+                    { element: inboxSocialCount, value: counts.social },
+                    { element: inboxUpdatesCount, value: counts.updates }
+                ].forEach(function (entry) {
+                    if (!entry.element) {
+                        return;
+                    }
+
+                    entry.element.textContent = entry.value ? String(entry.value) + " new" : "";
+                    entry.element.classList.toggle("d-none", !entry.value);
+                });
+            }
+
+            function setActiveInboxCategory(category) {
+                activeInboxCategory = category || "primary";
+
+                inboxCategoryButtons.forEach(function (button) {
+                    var isActive = button.getAttribute("data-category") === activeInboxCategory;
+
+                    button.classList.toggle("active", isActive);
+                    button.setAttribute("aria-selected", String(isActive));
+                });
+
+                renderInboxEmails(inboxMessages);
+            }
+
+            renderProfileDetails();
+            pendingLoginBackgroundImage = getLoginBackgroundImage();
+            applyLoginBackgroundImage(pendingLoginBackgroundImage);
+            sentEmailsKey = "digismartSentEmails:" + currentUser.mobileNumber;
+
+            function closeProfileMenu() {
+                profilePanel.classList.add("d-none");
+                profileToggle.setAttribute("aria-expanded", "false");
+                showProfileMenuView();
+            }
+
+            function toggleProfileMenu() {
+                var isHidden = profilePanel.classList.toggle("d-none");
+                showProfileMenuView();
+                profileToggle.setAttribute("aria-expanded", String(!isHidden));
+            }
+
+            function isValidEmailFormat(value) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            }
+
+            function isValidEmailList(value) {
+                var entries = String(value || "")
+                    .split(",")
+                    .map(function (entry) {
+                        return entry.trim();
+                    })
+                    .filter(Boolean);
+
+                return entries.length === 0 || entries.every(isValidEmailFormat);
+            }
+
+            function getSentEmails() {
+                var emails = localStorage.getItem(sentEmailsKey);
+
+                if (!emails) {
+                    return [];
+                }
+
+                try {
+                    return JSON.parse(emails);
+                } catch (error) {
+                    return [];
+                }
+            }
+
+            function saveSentEmails(emails) {
+                localStorage.setItem(sentEmailsKey, JSON.stringify(emails));
+            }
+
+            function toggleExtraRow(row, button) {
+                var isHidden = row.classList.toggle("d-none");
+                button.setAttribute("aria-expanded", String(!isHidden));
+            }
+
+            function insertTextAtCursor(textarea, text) {
+                var start = textarea.selectionStart || textarea.value.length;
+                var end = textarea.selectionEnd || textarea.value.length;
+
+                textarea.value = textarea.value.slice(0, start) + text + textarea.value.slice(end);
+                textarea.focus();
+                textarea.selectionStart = textarea.selectionEnd = start + text.length;
+            }
+
+            function appendAttachmentFiles(files) {
+                var fileList = Array.prototype.slice.call(files);
+                selectedAttachments = selectedAttachments.concat(fileList);
+
+                attachmentList.innerHTML = selectedAttachments.length
+                    ? selectedAttachments.map(function (file) {
+                        return '<span class="compose-attachment-chip">' + escapeHtml(file.name) + '</span>';
+                    }).join(" ")
+                    : "";
+            }
+
+            function showView(viewName) {
+                var isSentView = viewName === "sent";
+                var isInboxView = viewName === "inbox";
+                var isSendView = viewName === "send";
+
+                sendEmailView.classList.toggle("d-none", !isSendView);
+                inboxView.classList.toggle("d-none", !isInboxView);
+                sentEmailView.classList.toggle("d-none", !isSentView);
+                sendEmailTab.classList.toggle("active", isSendView);
+                inboxTab.classList.toggle("active", isInboxView);
+                sentEmailTab.classList.toggle("active", isSentView);
+                emailStatus.textContent = "";
+                inboxStatus.textContent = "";
+                inboxStatus.classList.remove("error");
+
+                if (isSentView) {
+                    renderSentEmails();
+                }
+
+                if (isInboxView) {
+                    loadInboxEmails();
+                }
+            }
+
+            toggleCcButton.addEventListener("click", function () {
+                toggleExtraRow(ccRow, toggleCcButton);
+                ccEmailInput.focus();
+            });
+
+            toggleBccButton.addEventListener("click", function () {
+                toggleExtraRow(bccRow, toggleBccButton);
+                bccEmailInput.focus();
+            });
+
+            profileMyProfileButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                showProfileDetailView();
+            });
+
+            profileBackButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                showProfileMenuView();
+            });
+
+            profileSettingsButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                showProfileSettingsView();
+                loginBackgroundStatus.textContent = pendingLoginBackgroundImage
+                    ? "Press OK to apply the selected background."
+                    : "Upload an image and press OK to apply it.";
+            });
+
+            profileSettingsBackButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                showProfileMenuView();
+            });
+
+            profileImageInput.addEventListener("change", function () {
+                var file = profileImageInput.files && profileImageInput.files[0];
+                var reader = null;
+
+                if (!file) {
+                    return;
+                }
+
+                if (file.type && file.type.indexOf("image/") !== 0) {
+                    profileImageInput.value = "";
+                    return;
+                }
+
+                reader = new FileReader();
+                reader.onload = function () {
+                    saveCurrentUser({
+                        profileImage: reader.result
+                    });
+                    profileImageInput.value = "";
+                };
+                reader.onerror = function () {
+                    profileImageInput.value = "";
+                };
+                reader.readAsDataURL(file);
+            });
+
+            loginBackgroundInput.addEventListener("change", function () {
+                var file = loginBackgroundInput.files && loginBackgroundInput.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                if (file.type && file.type.indexOf("image/") !== 0) {
+                    loginBackgroundInput.value = "";
+                    return;
+                }
+
+                loginBackgroundStatus.textContent = "Preparing image...";
+                compressBackgroundImage(file).then(function (compressedImage) {
+                    pendingLoginBackgroundImage = compressedImage;
+                    applyLoginBackgroundImage(pendingLoginBackgroundImage);
+                    loginBackgroundStatus.textContent = "Image selected. Press OK to apply it.";
+                    loginBackgroundInput.value = "";
+                }).catch(function (error) {
+                    pendingLoginBackgroundImage = "";
+                    loginBackgroundStatus.textContent = error.message || "Unable to read the selected image.";
+                    loginBackgroundInput.value = "";
+                });
+            });
+
+            loginBackgroundApplyButton.addEventListener("click", function () {
+                var backgroundImage = pendingLoginBackgroundImage || getLoginBackgroundImage();
+                var saved = false;
+
+                if (!backgroundImage) {
+                    loginBackgroundStatus.textContent = "Please upload an image first.";
+                    return;
+                }
+
+                saved = saveLoginBackgroundImage(backgroundImage);
+
+                if (!saved) {
+                    loginBackgroundStatus.textContent = "That image is too large to save. Please choose a smaller file.";
+                    return;
+                }
+
+                loginBackgroundStatus.textContent = "Background applied successfully.";
+                showProfileMenuView();
+            });
+
+            attachFileButton.addEventListener("click", function () {
+                attachmentInput.click();
+            });
+
+            insertLinkButton.addEventListener("click", function () {
+                insertTextAtCursor(emailMessageInput, "https://");
+            });
+
+            attachmentInput.addEventListener("change", function () {
+                try {
+                    appendAttachmentFiles(attachmentInput.files);
+                } catch (error) {
+                    emailStatus.textContent = error.message || "Unable to attach file.";
+                    emailStatus.classList.add("error");
+                }
+                attachmentInput.value = "";
+            });
+
+            function renderSentEmails() {
+                var emails = getSentEmails();
+
+                if (emails.length === 0) {
+                    sentEmailList.innerHTML = '<p class="empty-state">No sent emails yet.</p>';
+                    return;
+                }
+
+                sentEmailList.innerHTML = emails.map(function (email, index) {
+                    return '<article class="sent-email-item">' +
+                        '<div class="sent-email-header">' +
+                            '<strong>' + escapeHtml(email.subject) + '</strong>' +
+                            '<div class="sent-email-actions">' +
+                                '<span>' + escapeHtml(email.sentAt) + '</span>' +
+                                '<button type="button" class="delete-email-button" data-email-index="' + index + '">Delete</button>' +
+                            '</div>' +
+                        '</div>' +
+                        '<p><b>To:</b> ' + escapeHtml(email.to) + '</p>' +
+                        '<p>' + escapeHtml(email.message) + '</p>' +
+                    '</article>';
+                }).join("");
+            }
+
+            function escapeHtml(value) {
+                return String(value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            function extractEmailAddress(value) {
+                var match = String(value || "").match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+                return match ? match[0] : "";
+            }
+
+            function escapeAttribute(value) {
+                return escapeHtml(value).replace(/`/g, "&#096;");
+            }
+
+            function getAttachmentHref(attachment) {
+                return "data:" + (attachment.contentType || "application/octet-stream") + ";base64," + attachment.content;
+            }
+
+            function renderInboxEmails(messages) {
+                var categoryMessages = [];
+                var categoryLabel = getInboxCategoryLabel(activeInboxCategory);
+
+                messages = Array.isArray(messages) ? messages : inboxMessages;
+                updateInboxCategoryCounts(messages);
+
+                categoryMessages = messages.filter(function (message) {
+                    return (message.category || "primary") === activeInboxCategory;
+                });
+
+                if (!messages.length) {
+                    inboxList.innerHTML = '<p class="empty-state">No replies in inbox yet.</p>';
+                    inboxStatus.textContent = "Inbox is empty.";
+                    return;
+                }
+
+                if (!categoryMessages.length) {
+                    inboxList.innerHTML = '<p class="empty-state">No ' + escapeHtml(categoryLabel.toLowerCase()) + ' emails yet.</p>';
+                    inboxStatus.textContent = "Showing " + categoryLabel.toLowerCase() + " emails.";
+                    return;
+                }
+
+                inboxList.innerHTML = categoryMessages.map(function (message) {
+                    var index = typeof message.sourceIndex === "number" ? message.sourceIndex : messages.indexOf(message);
+                    var messageId = "inbox-message-" + index;
+
+                    return '<article class="inbox-item' + (message.unread ? ' unread' : '') + '" data-message-index="' + index + '" data-expanded="false" data-message-category="' + escapeAttribute(message.category || "primary") + '">' +
+                        '<button type="button" class="inbox-summary" aria-expanded="false" aria-controls="' + messageId + '">' +
+                            '<div class="inbox-summary-main">' +
+                                '<strong>' + escapeHtml(message.subject) + '</strong>' +
+                                '<p class="inbox-from">' + escapeHtml(message.from) + '</p>' +
+                                '<p class="inbox-preview">' + escapeHtml(message.preview || "") + '</p>' +
+                            '</div>' +
+                            '<div class="inbox-meta">' +
+                                (message.unread ? '<span class="inbox-badge">Unread</span>' : '') +
+                                '<span>' + escapeHtml(message.date) + '</span>' +
+                            '</div>' +
+                        '</button>' +
+                        '<div class="inbox-detail d-none" id="' + messageId + '">' +
+                            '<div class="inbox-body">' + escapeHtml(message.body || message.preview || "") + '</div>' +
+                            (message.attachments && message.attachments.length ? (
+                                '<div class="inbox-attachments">' +
+                                    '<div class="inbox-attachments-label">Attachments</div>' +
+                                    message.attachments.map(function (attachment, attachmentIndex) {
+                                        return '<a class="inbox-attachment-chip" href="' + getAttachmentHref(attachment) + '" download="' + escapeAttribute(attachment.filename || ('attachment-' + attachmentIndex)) + '">' +
+                                            '<i class="fa fa-paperclip" aria-hidden="true"></i>' +
+                                            '<span>' + escapeHtml(attachment.filename || ('attachment-' + attachmentIndex)) + '</span>' +
+                                        '</a>';
+                                    }).join("") +
+                                '</div>'
+                            ) : '') +
+                            '<div class="inbox-reply">' +
+                                '<div class="inbox-reply-header">' +
+                                    '<strong>Reply</strong>' +
+                                    '<span>To ' + escapeHtml(message.from) + '</span>' +
+                                '</div>' +
+                                '<textarea class="inbox-reply-message" rows="5" placeholder="Write a reply..."></textarea>' +
+                                '<div class="inbox-reply-actions">' +
+                                    '<button type="button" class="reply-send-button" data-reply-index="' + index + '">Send</button>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</article>';
+                }).join("");
+
+                inboxStatus.textContent = "Showing " + categoryLabel.toLowerCase() + " emails.";
+            }
+
+            async function loadInboxEmails() {
+                inboxStatus.textContent = "Loading inbox...";
+                inboxStatus.classList.remove("error");
+
+                try {
+                    var response = await fetch("/api/inbox?limit=20");
+                    var result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || "Unable to load inbox.");
+                    }
+
+                    inboxMessages = annotateInboxMessages(result.messages || []);
+                    renderInboxEmails(inboxMessages);
+                } catch (error) {
+                    inboxList.innerHTML = '<p class="empty-state">Inbox could not be loaded.</p>';
+                    inboxStatus.textContent = error.message || "Unable to load inbox.";
+                    inboxStatus.classList.add("error");
+                }
+            }
+
+            sendEmailForm.addEventListener("submit", async function (event) {
+                var toEmail = recipientEmailInput.value.trim();
+                var ccEmail = ccEmailInput.value.trim();
+                var bccEmail = bccEmailInput.value.trim();
+                var subject = emailSubjectInput.value.trim();
+                var message = emailMessageInput.value.trim();
+                var emails = getSentEmails();
+                var response = null;
+                var result = null;
+
+                event.preventDefault();
+                emailStatus.classList.remove("error");
+
+                if (toEmail === "") {
+                    emailStatus.textContent = "Please enter recipient email.";
+                    emailStatus.classList.add("error");
+                    recipientEmailInput.focus();
+                    return;
+                }
+
+                if (!isValidEmailList(toEmail)) {
+                    emailStatus.textContent = "Enter valid email id format.";
+                    emailStatus.classList.add("error");
+                    recipientEmailInput.focus();
+                    return;
+                }
+
+                if (ccEmail !== "" && !isValidEmailList(ccEmail)) {
+                    emailStatus.textContent = "Enter valid Cc email id format.";
+                    emailStatus.classList.add("error");
+                    ccEmailInput.focus();
+                    return;
+                }
+
+                if (bccEmail !== "" && !isValidEmailList(bccEmail)) {
+                    emailStatus.textContent = "Enter valid Bcc email id format.";
+                    emailStatus.classList.add("error");
+                    bccEmailInput.focus();
+                    return;
+                }
+
+                if (subject === "") {
+                    emailStatus.textContent = "Please enter subject.";
+                    emailStatus.classList.add("error");
+                    emailSubjectInput.focus();
+                    return;
+                }
+
+                if (message === "") {
+                    emailStatus.textContent = "Please enter message.";
+                    emailStatus.classList.add("error");
+                    emailMessageInput.focus();
+                    return;
+                }
+
+                emailStatus.textContent = "Sending email...";
+
+                try {
+                    var requestBody = new FormData();
+
+                    requestBody.append("to", toEmail);
+                    requestBody.append("cc", ccEmail);
+                    requestBody.append("bcc", bccEmail);
+                    requestBody.append("subject", subject);
+                    requestBody.append("message", message);
+
+                    selectedAttachments.forEach(function (file) {
+                        requestBody.append("attachments", file, file.name);
+                    });
+
+                    response = await fetch("/api/send-email", {
+                        method: "POST",
+                        body: requestBody
+                    });
+                    result = await response.json();
+                } catch (error) {
+                    emailStatus.textContent = "Unable to connect to email server.";
+                    emailStatus.classList.add("error");
+                    return;
+                }
+
+                if (!response.ok) {
+                    emailStatus.textContent = result.error || "Unable to send email.";
+                    emailStatus.classList.add("error");
+                    return;
+                }
+
+                emails.unshift({
+                    to: toEmail,
+                    subject: subject,
+                    message: message,
+                    sentAt: new Date().toLocaleString()
+                });
+                saveSentEmails(emails);
+                sendEmailForm.reset();
+                ccRow.classList.add("d-none");
+                bccRow.classList.add("d-none");
+                toggleCcButton.setAttribute("aria-expanded", "false");
+                toggleBccButton.setAttribute("aria-expanded", "false");
+                selectedAttachments = [];
+                attachmentList.innerHTML = "";
+                emailStatus.textContent = "Email sent successfully.";
+            });
+
+            sendEmailTab.addEventListener("click", function () {
+                showView("send");
+            });
+
+            inboxTab.addEventListener("click", function () {
+                showView("inbox");
+            });
+
+            sentEmailTab.addEventListener("click", function () {
+                showView("sent");
+            });
+
+            refreshInboxButton.addEventListener("click", function () {
+                loadInboxEmails();
+            });
+
+            inboxCategoryButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    setActiveInboxCategory(button.getAttribute("data-category"));
+                });
+            });
+
+            profileToggle.addEventListener("click", function (event) {
+                event.stopPropagation();
+                showProfileMenuView();
+                toggleProfileMenu();
+            });
+
+            profilePanel.addEventListener("click", function (event) {
+                event.stopPropagation();
+            });
+
+            inboxList.addEventListener("click", function (event) {
+                var summaryButton = event.target.closest(".inbox-summary");
+                var replyButton = event.target.closest(".reply-send-button");
+                var item = event.target.closest(".inbox-item");
+                var detail = null;
+                var expanded = false;
+                var messageIndex = 0;
+                var message = null;
+                var replyTextarea = null;
+                var replyText = "";
+                var replySubject = "";
+
+                if (!item) {
+                    return;
+                }
+
+                messageIndex = Number(item.getAttribute("data-message-index"));
+                message = inboxMessages[messageIndex];
+                detail = item.querySelector(".inbox-detail");
+
+                if (summaryButton) {
+                    expanded = item.getAttribute("data-expanded") === "true";
+                    item.setAttribute("data-expanded", String(!expanded));
+                    summaryButton.setAttribute("aria-expanded", String(!expanded));
+                    detail.classList.toggle("d-none", expanded);
+                    if (!expanded && message && message.unread) {
+                        message.unread = false;
+                        item.classList.remove("unread");
+
+                        var unreadBadge = item.querySelector(".inbox-badge");
+                        if (unreadBadge) {
+                            unreadBadge.remove();
+                        }
+
+                        updateInboxCategoryCounts(inboxMessages);
+
+                        if (message.uid) {
+                            fetch("/api/inbox/seen", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    uid: message.uid
+                                })
+                            }).catch(function () {
+                                // Keep the UI responsive even if the IMAP mark-read call fails.
+                            });
+                        }
+                    }
+                    return;
+                }
+
+                if (!replyButton || !message) {
+                    return;
+                }
+
+                replyTextarea = item.querySelector(".inbox-reply-message");
+                replyText = replyTextarea.value.trim();
+
+                if (!replyText) {
+                    inboxStatus.textContent = "Please write a reply first.";
+                    inboxStatus.classList.add("error");
+                    replyTextarea.focus();
+                    return;
+                }
+
+                replySubject = message.subject && /^re:/i.test(message.subject) ? message.subject : "Re: " + message.subject;
+                if (!extractEmailAddress(message.fromEmail || message.from)) {
+                    inboxStatus.textContent = "Unable to find a reply address for this message.";
+                    inboxStatus.classList.add("error");
+                    return;
+                }
+                inboxStatus.textContent = "Sending reply...";
+                inboxStatus.classList.remove("error");
+
+                fetch("/api/send-email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        to: message.fromEmail || extractEmailAddress(message.from),
+                        subject: replySubject,
+                        message: replyText
+                    })
+                }).then(function (response) {
+                    return response.json().then(function (result) {
+                        return { response: response, result: result };
+                    });
+                }).then(function (payload) {
+                    if (!payload.response.ok) {
+                        throw new Error(payload.result.error || "Unable to send reply.");
+                    }
+
+                    replyTextarea.value = "";
+                    inboxStatus.textContent = "Reply sent successfully.";
+                }).catch(function (error) {
+                    inboxStatus.textContent = error.message || "Unable to send reply.";
+                    inboxStatus.classList.add("error");
+                });
+            });
+
+            sentEmailList.addEventListener("click", function (event) {
+                var deleteButton = event.target.closest(".delete-email-button");
+                var emails = getSentEmails();
+                var emailIndex = 0;
+
+                if (!deleteButton) {
+                    return;
+                }
+
+                emailIndex = Number(deleteButton.getAttribute("data-email-index"));
+
+                if (Number.isNaN(emailIndex)) {
+                    return;
+                }
+
+                emails.splice(emailIndex, 1);
+                saveSentEmails(emails);
+                renderSentEmails();
+            });
+
+            profileLogoutButton.addEventListener("click", function () {
+                localStorage.removeItem(currentUserKey);
+                window.location.href = "CRE - DIGISMART.html";
+            });
+
+            document.addEventListener("click", function () {
+                closeProfileMenu();
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeProfileMenu();
+                }
+            });
+
+            drawCaptcha();
+            showView("send");
+        })();
+    </script>
+</body>
+</html>

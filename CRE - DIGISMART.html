@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cre.ashokleyland.com/images/favicon-ico.png" type="image/x-icon">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome.min.css" rel="stylesheet">
+    <link href="login-clean.css" rel="stylesheet">
+    <title>CRE - DIGISMART</title>
+</head>
+<body>
+    <main class="login-shell">
+        <section class="login-panel" aria-label="DIGISMART login">
+            <header class="brand-header">
+                <img src="logo.png" alt="Ashok Leyland" class="brand-logo">
+            </header>
+
+            <div class="login-content">
+                <img src="DIG_smart.png" alt="DIGISMART" class="product-logo">
+
+                <form id="login-form" class="login-form" method="post" action="dashboard.html" novalidate>
+                    <input type="hidden" name="_token" value="NRofwcmWwM3qj3cbXRcxfaHaF7NRYCpuHIGyxRCr">
+
+                    <div class="field-group">
+                        <label for="login">Mobile Number</label>
+                        <input id="login" type="tel" name="mobile_number" autocomplete="tel" inputmode="numeric" maxlength="10" autofocus>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" name="password" autocomplete="current-password">
+                    </div>
+
+                    <div class="field-group captcha-group">
+                        <label for="captcha">Captcha</label>
+                        <div class="captcha-row">
+                            <input id="captcha" type="text" name="captcha" autocomplete="off">
+                            <span class="captcha-image">
+                                <canvas id="captcha-canvas" width="120" height="37" aria-label="Captcha code"></canvas>
+                            </span>
+                            <button type="button" id="reload" class="captcha-refresh" aria-label="Refresh captcha">
+                                <span aria-hidden="true">&#8635;</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="login-again d-none" id="logout-text">You were logged out due to inactivity. Please log in again.</p>
+
+                    <button type="submit" class="login-button">
+                        <span>Login</span>
+                        <span aria-hidden="true">&#8250;</span>
+                    </button>
+
+                    <a href="https://cre.ashokleyland.com/forget-password" class="forgot-link">FORGOT PASSWORD ?</a>
+
+                    <p class="register-prompt">Don't have an account? <button type="button" id="show-register">Register</button></p>
+                </form>
+
+                <form id="register-form" class="login-form register-form d-none" novalidate>
+                    <div class="field-grid">
+                        <div class="field-group">
+                            <label for="first-name">First Name</label>
+                            <input id="first-name" type="text" name="first_name" autocomplete="given-name">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="last-name">Last Name</label>
+                            <input id="last-name" type="text" name="last_name" autocomplete="family-name">
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" name="username" autocomplete="username">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="mobile-number">Mobile Number</label>
+                        <input id="mobile-number" type="tel" name="mobile_number" autocomplete="tel">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" autocomplete="email">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="">Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Transgender">Transgender</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="register-password">Password</label>
+                        <input id="register-password" type="password" name="password" autocomplete="new-password">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" type="password" name="confirm_password" autocomplete="new-password">
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        <span>Submit</span>
+                        <span aria-hidden="true">&#8250;</span>
+                    </button>
+
+                    <p class="register-prompt">Already have an account? <button type="button" id="show-login">Login</button></p>
+                </form>
+            </div>
+        </section>
+
+        <aside class="login-visual" aria-hidden="true">
+            <div class="visual-tint"></div>
+        </aside>
+    </main>
+
+    <div class="validation-modal" id="validation-modal" role="alertdialog" aria-modal="true" aria-labelledby="validation-message" hidden>
+        <div class="validation-box">
+            <p id="validation-message">Please enter user email id</p>
+            <button type="button" id="validation-ok">Ok</button>
+        </div>
+    </div>
+
+    <script src="login-validation.js"></script>
+</body>
+</html>

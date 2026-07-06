@@ -1,0 +1,14 @@
+{
+  "name": "cre-digismart-mail",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "imapflow": "^1.4.2",
+    "mailparser": "^3.9.11",
+    "nodemailer": "^6.9.16"
+  }
+}

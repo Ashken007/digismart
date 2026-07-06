@@ -1,0 +1,33 @@
+@media screen and (min-width: 760px) and (max-width: 920px) {
+    .width820 {
+        width: 55%;
+        overflow-x: hidden;
+    }
+    
+}
+@media screen and (max-width: 560px) {
+    .width820 {width: 100%;}
+    .login-form {width: 100%;}
+    .card {margin: 10px;}
+    .form-select1, .form-control1 {width: auto !important;}
+    .form-header-sec {
+        display: block !important;
+    }
+    .btn.btn-filter, .w-30, .search-btn {width: 100% !important;}
+    .header-filersec {
+        margin: 15px 0;
+    }
+    .wdspan {
+        width: 45%;
+    }
+    .tab-innerconten-area {
+        display: block !important;
+    }
+    .form-filter {
+        display: block !important;
+    }
+    .caption {width: 50%;}
+    .text-right.caption {
+        text-align: right;
+    }
+}

@@ -1,0 +1,735 @@
+html, body {
+font-size: 15px !important;
+font-family: Roboto, Geneva, Arial, Helvetica, sans-serif !important;
+padding: 0;
+margin: 0;
+background: #fff;
+}
+
+.vehicleSearch{
+	width:auto% !important;
+	display:inline-flex !important;
+}
+/* login page css start */
+section.login-main {
+    background: url(../images/login-bg.png) no-repeat left top !important;
+    background-size: cover !important;
+    height: 100vh;
+    width: 100%;
+}
+.logo-brand {
+    width: 250px;
+    height: auto;
+}
+
+.select2-results__option[role="option"][aria-selected="true"]::before {
+    position: absolute;
+    left: 0.5em;
+    content: "";
+}
+
+.btn-outline-warning:checked {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-outline-warning {
+    color: #ffc107;
+    border-color: black;
+}
+
+.btn-group>.btn{
+	background:lightgray;
+	color:black;
+}
+.btn-group>.btn:active{
+	    color: #000;
+    background-color: #ffcd39;
+    border-color: #ffc720;
+}
+.btn-group>.btn:focus{
+	    color: #000;
+    background-color: #ffcd39;
+    border-color: #ffc720;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  background: url(../images/select2.png) right top no-repeat;
+  background-position: right -22px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 2dppx)  {
+   .select2-container--default .select2-search--dropdown .select2-search__field {
+      background-image: url(../images/select2x2.png);
+      background-repeat: no-repeat;
+      background-size: 60px 40px;
+      background-position: 100% -21px;
+   }
+}
+
+.navbar-brand {
+    padding: 0px;
+  }
+  .navbar-brand>img {
+    height: 100%;
+    padding: 15px;
+    width: 100%;
+  }
+  
+.text-end.forget-tex {
+    font-size: 14px;
+}
+.navbar-toggle.rarr.collapsed .icon-bar:nth-of-type(1) {
+	transform: translate3d(0,0,0) rotate(0deg);
+	transform-origin: right top;
+	width: 22px;
+}
+
+.bi-arrow-clockwise::before {padding-left: 10px;color: #0488d2;font-size: 18px;}
+.fa-user-circle:before, .dropdown-toggle::after {color: #ddd;}
+.form-label.label-tex {
+    font-size: 15px;
+    text-align: start;
+    left: 20px;
+    position: relative;
+    top: 17px;
+    background: rgb(255, 255, 255);
+    padding: 5px;
+    z-index: 9;
+    color: #074d85;
+}
+.select2-container .select2-selection--single {
+	height:32px !important;
+}
+
+#table1 tr td{
+	background:#e5e5e5 !important;
+}
+.fa {color: #2e2626;}
+input[type=text], input[type=password], input[type=number],input[type=email], textarea {border:1px solid #3ea8dc;}
+.forgot-pw {
+    text-decoration-line: none;
+}
+#captcha-g {
+    border-radius: 25px;
+    border: 1px solid #f3f3f3;
+    margin-left: 6px;
+    background: #f3f3f3;
+}
+.forgot-pw:hover {
+    color: #ff8d00;
+}
+.btn.btn-primary.text-light.main-bg:hover {
+    background: #ff8d00;
+    border: 1px solid #ff8d00;
+}
+.fa-angle-right:hover {padding-left:25px;}
+  
+.main-bg {
+    background: #0489cc;
+    border: 1px solid #0489cc;
+}
+.width820 {width: 35%;}
+.login-again {
+    font-size: 11px;
+    background: #ff28285c;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ff28285c;
+    color: #000000;
+}
+/* login page css End */
+
+  /* import page css start */
+  .header-bg {
+    background-color: #151e6c!important;
+}
+.navbar-brand.navlogo {
+    width: 250px;
+    height: auto;
+}
+.fa-user-circle:before,.dropdown-toggle::after {font-size: 22px;}
+  .profile-menu.dropdown-menu {
+    right: 0;
+    left: unset;
+  }
+  .profile-menu.dropdown-menu.fa-fw{
+    margin-right: 10px;
+  }
+  .toggle-change:after{
+    border-top: 0;
+    border-bottom: .3em solid;
+   
+} 
+.custom-file-uploader {position: relative;
+    background: #003c97d6;
+    border: 1px solid #ddd !important;
+    color: #fff;}
+input[type='file'] {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: default;
+}
+.browse-file {
+    
+    border: 1px solid #ddd !important;
+    background:#fff !important;
+    margin-right: 5px;
+}
+.inner-sec h1 {
+    font-size: 22px;
+}
+.main-sec {
+    padding: 4px 0;
+}
+.import-text1 {
+    margin-right: 25px;
+    margin-top: 7px;
+    width: 100px;
+    text-align: right;
+}
+
+.form-group {
+    margin: 5px 0;
+}
+
+/* import page css end */
+.bi-filter::before {
+    content: "\f3ca";
+    font-size: 16px;
+    color: #151e6c;
+}
+/* Download reports page css starts */
+
+.form-floating>.form-control, .form-floating>.form-select {
+    height: calc(2rem + 2px) !important;
+    border: 1px solid #ced4da !important;
+}
+    span.import-text {
+        width: 106px;
+        text-align: right;
+        margin-right: 3%;
+    }
+    .frdate {
+        margin: 10px 20px !important;
+    }
+    .report-btn {
+        background: #151e6c;
+        border: 1px solid #151e6c;
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    .report-btn:hover {
+        background: #054d8b;
+        border: 1px solid #054d8b;
+    }
+
+/* Download reports page css end */
+
+/* my account page css start */
+
+
+.form-control {
+    box-shadow: none;
+    border-color: #ddd;
+}
+.form-control:focus {
+    border-color: #007bff; 
+}
+.login-form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+.form-label.label-text {
+    margin-bottom: 0px;
+}
+.login-form form {
+    color: #434343;
+    border-radius: 1px;
+    margin:0 15px;
+    background: #fff;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h4 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.login-form .form-group {
+    margin-bottom: 20px;
+}
+.login-form .form-control, .login-form .btn {
+    min-height: 20px;
+    border-radius: 2px; 
+    transition: all 0.5s;
+}
+.login-form .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.login-form .btn {
+    background: #007bff;
+    border: none;
+    line-height: normal;
+    width: 100%;
+    font-size: 18px;
+    color: #fff;
+}
+.login-form .btn:hover, .login-form .btn:focus {
+    background: #007bff;
+}
+.login-form .checkbox-inline {
+    float: left;
+}
+.login-form input[type="checkbox"] {
+    margin-top: 2px;
+}
+.login-form .forgot-link {
+    float: right;
+}
+.login-form .small {
+    font-size: 13px;
+}
+.login-form a {
+    color: #007bff;
+}
+.text-clr {
+    color: #ff9200;
+    background: #e1f2f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+.fa-angle-double-left:before {
+    content: "\f100";
+    color: #fff;
+}
+
+.fa-angle-right:before { color: #fff !important;}
+/* myaccount pages css end */
+
+/* cre landing page css start */
+.card {
+    border: 1px solid #f3f3f3;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+    margin: 10px;
+}
+.card-body a {
+    text-decoration: none;
+}
+.card a {
+    text-decoration: none;
+    color: #000;
+}
+.card-imgicon {
+    padding-bottom: 10px;
+}
+
+/* cre landing page css end */
+/* user list page css start */
+.table-bordered>:not(caption)>*>* {font-size: 13px;}
+.add-row {
+    background: #f3f3f3;
+}
+
+li.active a:link {
+    color:red;
+    font-weight:bold;
+  }
+  
+  .breadcrumb li.active {
+    font-weight:bold;
+  }
+  .r-0 {
+    left: 93%;
+    top: 10px;
+}
+
+/*user list page css end */
+
+/* cre user new page css start */
+
+.header-filersec {
+    background: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    #box-shadow: 1px 2px 9px -1px rgba(0,0,0,0.75);
+#-webkit-box-shadow: 1px 2px 9px -1px rgba(0,0,0,0.75);
+#-moz-box-shadow: 1px 2px 9px -1px rgba(0,0,0,0.75);
+}
+.filtered-div {
+    display: none;
+}
+.form-group.w-30 {
+    width: 30%;
+}
+.w-30 {
+    width: 30%;
+}
+.form-header-sec {
+  display: flex;
+}
+.mr-2 {
+    margin-right: 15px;
+}
+.btn.btn-filter {
+    border: 1px solid #ddd;
+    width: 100%;
+    text-align: left;
+    font-size: 13px;
+    color: #ec7d35;
+}
+.op-fz {
+    font-size: 13px;
+}
+
+tr td{
+  padding: 2px !important;
+  margin: 2px !important;
+}
+
+
+.fa-filter {padding-right: 5px;}
+.search-btn {
+    font-size: 13px;
+    background: #151e6c;
+    color: #fff;
+}
+.search-btn:hover {
+  color: #fff;
+  background: #ec7d35;
+}
+
+.fa-search:before{
+  color:#ddd;
+}
+.skip-ico {
+    font-size: 16px;
+    color: #fff;
+    padding-left: 15px;
+}
+.fa.fa-star {
+    font-size: 8px;
+    color: #eb0000;
+}
+.navbar {
+	padding:0;
+}
+.mt-o {margin-top: 0px;}
+
+tr, td {
+    text-align: left;
+    vertical-align: initial;
+}
+th.thead {
+    font-weight: 400;
+    color: white;
+    font-size: 11px;
+    display: table-cell;
+	background: #131f6b;
+    text-align: center;
+}
+.text-fz, .moblieno {
+    font-size: 13px;
+	line-height: 6px !important;
+}
+
+.customer_name_td {
+	line-height: 20px !important;
+}
+#pills-tab {
+    background: #131f6b;
+    border-radius: 10px 10px 0px 0px
+}
+#pills-totalvechile-tab, #pills-totalduevechile-tab, #pills-freeservice-tab, #pills-paidservice-tab {
+    width: 100%;
+    padding: 0;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 11px;
+}
+.service-heading {
+    font-size: 14px;
+    font-weight: 600;
+	margin:0.1px !important;
+}
+.service-table-border-radius {
+    border-radius: 10px;
+    background: #ed7d31;
+    color: #fff;
+}
+.table2-bg {
+    background: #007bb5 !important;
+}
+.table3-bg {
+    background: #069689 !important;
+}
+.tabs-table {
+    border: 2px solid #2095f2;
+    border-radius: 8px;
+    border-top: none;
+}
+
+li.nav-item {
+    width: 25%;
+}
+.nav-pills .nav-link {
+    background: #131f6b !important;
+    color: #fff;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #2095f2 !important;
+}
+.tab-innerconten-area {
+    display: flex;
+    padding-top: 15px;;
+}
+.vechile-details {
+    font-size: 12px;
+    font-weight: 600;
+}
+span.valid-details {
+    padding: 0 20px 0px 0px;
+}
+.paid-text {
+    font-size: 12px;
+}
+.wdspan {
+    padding-right: 3px !important;
+}
+.hr-line {
+  height: 1px;
+  width: 96%;
+  background: #ddd;
+  text-align: center;
+  margin: 0 auto;
+}
+.tab-pane {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.btn.btn-light.fz-small, .btn.btn-warning.fz-small.active {
+    font-size: 12px !important;
+}
+.filter-btn label {
+    font-weight: 600;
+}
+.form-filter li {
+    list-style: none;
+}
+.btn-group.mr-1 {
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.btn.btn-light.fz-small {
+    background: #dbdbdb;
+}
+.show-filter {
+    font-size: 12px;
+    color: #f58800;
+    border: 1px solid #ced4da;
+    text-align: left;
+}
+.bi.bi-filter {
+    margin-right: 5px;
+    color: #151e6c;
+    font-size: 12px;
+    font-weight: 700;
+}
+.vechile-heading {
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.vechile-yr {
+    margin: 20px 30px;
+}
+
+
+.slider-labels {
+    margin-top: 10px;
+  }
+  
+  /* Functional styling;
+   * These styles are required for noUiSlider to function.
+   * You don't need to change these rules to apply your design.
+   */
+  .noUi-target,.noUi-target * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .noUi-target {
+    position: relative;
+    direction: ltr;
+  }
+  
+  .noUi-base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  /* Fix 401 */
+  }
+  
+  .noUi-origin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+  
+  .noUi-handle {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .noUi-stacking .noUi-handle {
+  /* This class is applied to the lower origin when
+     its values is > 50%. */
+    z-index: 10;
+  }
+  
+  .noUi-state-tap .noUi-origin {
+    -webkit-transition: left 0.3s,top .3s;
+    transition: left 0.3s,top .3s;
+  }
+  
+  .noUi-state-drag * {
+    cursor: inherit !important;
+  }
+  
+  /* Painting and performance;
+   * Browsers can paint handles in their own layer.
+   */
+  .noUi-base,.noUi-handle {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+  
+  /* Slider size and handle placement;
+   */
+  .noUi-horizontal {
+    height: 4px;
+  }
+  
+  .noUi-horizontal .noUi-handle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    left: -7px;
+    top: -7px;
+    background-color: #dbdbdb;
+  }
+  
+  /* Styling;
+   */
+  .noUi-background {
+    background: #D6D7D9;
+  }
+  
+  .noUi-connect {
+    background: #ffcd39;
+    -webkit-transition: background 450ms;
+    transition: background 450ms;
+  }
+  .caption {
+    font-size: 12px;
+    width: 40%;
+}
+  .noUi-origin {
+    border-radius: 2px;
+  }
+  
+  .noUi-target {
+    border-radius: 2px;
+  }
+  
+  .noUi-target.noUi-connect {
+  }
+  
+  /* Handles and cursors;
+   */
+  .noUi-draggable {
+    cursor: w-resize;
+  }
+  
+  .noUi-vertical .noUi-draggable {
+    cursor: n-resize;
+  }
+  
+  .noUi-handle {
+    cursor: default;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+  }
+  
+  .noUi-handle:active {
+    border: 8px solid #345DBB;
+    border: 8px solid rgba(53,93,187,0.38);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    left: -14px;
+    top: -14px;
+  }
+  
+  /* Disabled state;
+   */
+  [disabled].noUi-connect,[disabled] .noUi-connect {
+    background: #B8B8B8;
+  }
+  
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+  
+  [disabled].noUi-origin,[disabled] .noUi-handle {
+    cursor: not-allowed;
+  }
+ .exp-iconmodal {max-width: 980px !important;}
+ .serivce-table2.table-responsive {
+    border-radius: 10px !important;
+}
+.service-table-border-radius.table2-bg a {
+    text-decoration: none;
+    color: #fff !important;
+}
+.service-heading a {text-decoration: none;color: #000;}
+/* cre user new pages css end */
